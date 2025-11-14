@@ -1,0 +1,8 @@
+library(data.table)
+library(adbcsqlite)
+library(adbcdrivermanager)
+library(S7)
+library(read.sql)
+library(shiny)
+library(bslib)
+library(fontawesome)
