@@ -1,10 +1,13 @@
 mod_reports_ui <- function(id) {
   ns <- NS(id)
-  layout_column_wrap(
-    width = 1,
-    card(
-      card_header("Reports Module"),
-      card_body("This is the reports tab content.")
+  nav_panel(
+    tagList(icon("file-alt"), "Reports"),
+    layout_column_wrap(
+      width = 1,
+      card(
+        card_header("Reports Module"),
+        card_body("This is the reports tab content.")
+      )
     )
   )
 }

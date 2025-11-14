@@ -7,15 +7,8 @@ main_ui <- function(id) {
 
     nav_spacer(),
 
-    nav_panel(
-      tagList(icon("database"), "Database"),
-      mod_database_ui("db")
-    ),
-
-    nav_panel(
-      tagList(icon("file-alt"), "Reports"),
-      mod_reports_ui("rep")
-    ),
+    mod_database_ui("db"),
+    mod_reports_ui("rep"),
     nav_item(
       input_dark_mode(id = ns("dark_mode"), mode = "light")
     )
