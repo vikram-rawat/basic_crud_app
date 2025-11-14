@@ -15,6 +15,9 @@ main_ui <- function(id) {
     nav_panel(
       tagList(icon("file-alt"), "Reports"),
       mod_reports_ui("rep")
+    ),
+    nav_item(
+      input_dark_mode(id = ns("dark_mode"), mode = "light")
     )
   )
 }
