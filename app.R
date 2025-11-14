@@ -1,36 +1,12 @@
-ui <- page_navbar(
-  title = "Dummy App",
-  theme = app_theme,
-  nav_spacer(),
-  # Home tab
-  nav_panel(
-    "DataBase",
-    layout_column_wrap(
-      width = 1,
-      card(
-        card_header("About This App"),
-        card_body(
-          "This is a dummy Shiny app using bslib. It demonstrates a full UI layout with theming and components."
-        )
-      )
-    )
-  ),
+# source global.R
+source("global.R")
 
-  # Upload tab
-  nav_panel(
-    "Reports",
-    layout_column_wrap(
-      width = 1,
-      card(
-        card_header("About This App"),
-        card_body(
-          "This is a dummy Shiny app using bslib. It demonstrates a full UI layout with theming and components."
-        )
-      )
-    )
-  )
-)
+# UI
+ui <- main_ui("main")
 
-server <- function(input, output, session) {}
+# Server
+server <- function(input, output, session) {
+  main_server("main")
+}
 
 shinyApp(ui, server)
