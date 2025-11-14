@@ -2,12 +2,24 @@ mod_database_ui <- function(id) {
   ns <- NS(id)
   nav_panel(
     tagList(icon("database"), "Database"),
-
-    layout_column_wrap(
-      width = 1,
-      card(
-        card_header("Database Module"),
-        card_body("This is the database tab content.")
+    card(
+      height = 300,
+      full_screen = TRUE,
+      card_header("Database Operations"),
+      layout_sidebar(
+        fillable = TRUE,
+        sidebar = sidebar(
+          navset_pill_list(
+            widths = c(12, 12),
+            nav_panel(title = "One", p("First tab content.")),
+            nav_panel(title = "Two", p("Second tab content.")),
+            nav_panel(title = "Three", p("Third tab content")),
+            nav_spacer()
+          )
+        ),
+        card_body(
+          p("This is the database tab content.")
+        )
       )
     )
   )
