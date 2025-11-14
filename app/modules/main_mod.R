@@ -16,7 +16,13 @@ main_ui <- function(id) {
 # Server
 main_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    sqlite_db <- sqlite_mng("app/data/dummy_data.db") |>
+    session$onSessionEnded(
+      function() {
+        sqlite_db |> db_disconnect()
+      }
+    )
+
+    sqlite_db <- sqlite_mng(main_db_path) |>
       db_connect()
 
     mod_database_server("db")

@@ -25,3 +25,5 @@ app_theme <- bs_theme(
   version = 5,
   brand = "_brand.yml"
 )
+
+main_db_path <- "app/data/sku_management.db"

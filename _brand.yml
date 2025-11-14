@@ -2,9 +2,8 @@ defaults:
   bootstrap:
     defaults:
       navbar-bg: '#457b9d'
-      card-cap-bg: '#6e008b' # header background (dark purple here)
-      card-cap-color: '#005e5e'
-      card-bg: '#fefefe' # light grey
+      card-cap-bg: '#457b9d' # header background (dark purple here)
+      # card-cap-color: '#00458b'
 
 meta:
   name: Home Depot
