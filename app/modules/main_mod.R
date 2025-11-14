@@ -9,9 +9,7 @@ main_ui <- function(id) {
 
     mod_database_ui("db"),
     mod_reports_ui("rep"),
-    nav_item(
-      input_dark_mode(id = ns("dark_mode"), mode = "light")
-    )
+    nav_icon_ui("nav_icon")
   )
 }
 

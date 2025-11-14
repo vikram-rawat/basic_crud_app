@@ -13,6 +13,7 @@ source("app/funcs/classes/db_class.R")
 source("app/modules/main_mod.R")
 source("app/modules/tab_db_mod.R")
 source("app/modules/tab_reports_mod.R")
+source("app/modules/nav_theme_mod.R")
 
 # create variables: ----------------------------------
 get_iris_data_sql <- rs_read_query(
