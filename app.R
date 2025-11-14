@@ -1,7 +1,7 @@
 ui <- page_navbar(
   title = "Dummy App",
   theme = app_theme,
-
+  nav_spacer(),
   # Home tab
   nav_panel(
     "Home",
