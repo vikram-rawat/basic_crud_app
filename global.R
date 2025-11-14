@@ -23,7 +23,7 @@ get_iris_data_sql <- rs_read_query(
 
 app_theme <- bs_theme(
   version = 5,
-  brand = "_brand.yml"
+  brand = "app/configs/_brand.yml"
 )
 
 main_db_path <- "app/data/sku_management.db"

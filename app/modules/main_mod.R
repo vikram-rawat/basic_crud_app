@@ -18,7 +18,8 @@ main_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     session$onSessionEnded(
       function() {
-        sqlite_db |> db_disconnect()
+        sqlite_db |>
+          db_disconnect()
       }
     )
 
