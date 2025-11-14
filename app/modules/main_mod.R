@@ -2,14 +2,14 @@ main_ui <- function(id) {
   ns <- NS(id)
 
   page_navbar(
-    title = "Dummy App",
+    title = "SKU management System",
     theme = app_theme,
 
     nav_spacer(),
 
-    mod_database_ui("db"),
-    mod_reports_ui("rep"),
-    nav_icon_ui("nav_icon")
+    mod_database_ui(ns("db")),
+    mod_reports_ui(ns("rep")),
+    nav_icon_ui(ns("nav_icon"))
   )
 }
 
