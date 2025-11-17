@@ -8,7 +8,7 @@ mod_database_ui <- function(id) {
       nav_panel(
         "Products",
         card_title("Products Data Entry"),
-        mod_products_ui("products")
+        mod_products_ui(ns("products"))
       ),
       nav_panel(
         "Vendors",
