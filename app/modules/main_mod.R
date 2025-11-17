@@ -2,6 +2,14 @@ main_ui <- function(id) {
   ns <- NS(id)
 
   page_navbar(
+    tags$head(
+      tags$script(src = "public/main_script.js"),
+      tags$link(
+        rel = "stylesheet",
+        type = "text/css",
+        href = "public/main_style.css"
+      )
+    ),
     title = "SKU management System",
     theme = app_theme,
 

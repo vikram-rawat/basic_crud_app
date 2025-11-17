@@ -17,6 +17,9 @@ source("modules/nav_theme_mod.R")
 source("modules/db_products_mod.R")
 source("modules/add_products_mod.R")
 
+# set defaults: ----------------------------------
+addResourcePath("public", "public")
+
 # create variables: ----------------------------------
 get_iris_data_sql <- rs_read_query(
   filepath = "data/sql/get_iris_data.sql",
