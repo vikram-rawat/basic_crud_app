@@ -11,7 +11,6 @@ sqlite_mng <- new_class(
   ) {
     # Create environment to hold mutable store
     store_env <- new.env(parent = emptyenv())
-    store_env$db <- NULL
     store_env$connection <- NULL
     store_env$is_connected <- FALSE
     store_env$max_retries <- as.integer(max_retries)
@@ -59,16 +58,14 @@ db_connect <- new_generic("db_connect", "dbm")
 method(db_connect, sqlite_mng) <- function(dbm) {
   tryCatch(
     {
-      dbm@store$db <- adbcdrivermanager::adbc_database_init(
-        adbcsqlite::adbcsqlite(),
-        uri = dbm@db_path
+      new_con <- DBI::dbConnect(
+        RSQLite::SQLite(),
+        dbname = dbm@db_path,
+        loadable.extensions = TRUE
       )
 
-      set_connection(
-        dbm,
-        dbm@store$db |>
-          adbcdrivermanager::adbc_connection_init()
-      )
+      # Store the DBI connection object
+      set_connection(dbm, new_con)
 
       dbm@store$is_connected <- TRUE
 
@@ -93,8 +90,10 @@ method(is_connected, sqlite_mng) <- function(dbm) {
   tryCatch(
     {
       # Try a simple query to check connection
-      result <- get_connection(dbm) |>
-        adbcdrivermanager::read_adbc("SELECT 1")
+      is_valid <- dbm |>
+        get_connection() |>
+        DBI::dbIsValid()
+
       dbm@store$is_connected <- TRUE
       return(TRUE)
     },
@@ -197,14 +196,10 @@ method(db_disconnect, sqlite_mng) <- function(dbm) {
       # Run GC to ensure any unreleased Result objects are cleaned up
       gc(full = TRUE) # Clean up before disconnecting
 
-      # first release connection
-      adbcdrivermanager::adbc_connection_release(
-        get_connection(dbm)
-      )
-
-      # then release database
-      dbm@store$db |>
-        adbcdrivermanager::adbc_database_release()
+      # DBI handles the release of the underlying RSQLite connection.
+      dbm |>
+        get_connection() |>
+        DBI::dbDisconnect()
 
       set_connection(dbm, NULL)
       dbm@store$is_connected <- FALSE
@@ -224,7 +219,7 @@ method(db_disconnect, sqlite_mng) <- function(dbm) {
 # Helper function for query execution
 execute_query <- function(dbm, sql_query, ...) {
   get_connection(dbm) |>
-    adbcdrivermanager::read_adbc(sql_query, ...) |>
+    DBI::dbGetQuery(sql_query, ...) |>
     data.table::as.data.table()
 }
 
@@ -236,7 +231,7 @@ execute_query <- function(dbm, sql_query, ...) {
 # is_connected(db) # Should return TRUE if connection is alive
 
 # # This will automatically reconnect if there's an issue
-# result <- db_get_query(db, "SELECT * FROM iris_data LIMIT 10")
+# result <- db_get_query(db, "SELECT 1")
 
 # db_disconnect(db)
 # get_connection(db) # Should return NULL after disconnect
