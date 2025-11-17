@@ -6,14 +6,19 @@ mod_database_ui <- function(id) {
       full_screen = TRUE,
       title = "Database Operations",
       nav_panel(
-        "Plotly",
-        card_title("A plotly plot"),
-        "plotly_widget"
+        "Products",
+        card_title("Add Products"),
+        "product_form"
       ),
       nav_panel(
-        "Leaflet",
-        card_title("A leaflet plot"),
-        "leaflet_widget"
+        "Vendors",
+        card_title("Add Vendors"),
+        "vendor_form"
+      ),
+      nav_panel(
+        "Price",
+        card_title("Add Rates"),
+        "rate_form"
       )
     )
   )
@@ -22,9 +27,5 @@ mod_database_ui <- function(id) {
 mod_database_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
-
-    observe({
-      nav_select(ns("db_navset"), input$item)
-    })
   })
 }
