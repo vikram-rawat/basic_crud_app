@@ -9,7 +9,7 @@ add_products_ui <- function(id) {
       selectInput(
         ns("uom"),
         "Unit of Measurement",
-        choices = c("Feet", "Meters", "Pieces", "Boxes", "Kg"),
+        choices = global_configs$unit_of_measurement,
         selected = "Pieces"
       )
     ),
@@ -59,7 +59,11 @@ add_products_server <- function(id) {
         updateTextInput(session, "product_name", value = "")
         updateTextInput(session, "variant", value = "")
         updateTextInput(session, "dimensions", value = "")
-        updateSelectInput(session, "uom", selected = "Pieces")
+        updateSelectInput(
+          session,
+          "uom",
+          selected = global_configs$unit_of_measurement[[1]]
+        )
       }
     )
   })

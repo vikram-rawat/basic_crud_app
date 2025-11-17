@@ -1,1 +1,11 @@
 default:
+  unit_of_measurement:
+    - feet
+    - meter
+    - piece
+    - box
+    - kg
+    - tonne
+  main_db_path: data/dummy_data.db
+  app_title: Basic CRUD App
+  app_version: 1.0.0

@@ -28,4 +28,4 @@ app_theme <- bs_theme(
   brand = "configs/_brand.yml"
 )
 
-main_db_path <- "data/sku_management.db"
+global_configs <- config::get(file = "configs/config.yml")

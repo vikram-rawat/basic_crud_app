@@ -23,7 +23,7 @@ main_server <- function(id) {
       }
     )
 
-    session$userData$sqlite_db <- sqlite_mng(main_db_path) |>
+    session$userData$sqlite_db <- sqlite_mng(global_configs$main_db_path) |>
       db_connect()
 
     mod_database_server("db")
