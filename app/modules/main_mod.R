@@ -18,12 +18,12 @@ main_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     session$onSessionEnded(
       function() {
-        sqlite_db |>
+        session$userData$sqlite_db |>
           db_disconnect()
       }
     )
 
-    sqlite_db <- sqlite_mng(main_db_path) |>
+    session$userData$sqlite_db <- sqlite_mng(main_db_path) |>
       db_connect()
 
     mod_database_server("db")
