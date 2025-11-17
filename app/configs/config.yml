@@ -9,3 +9,8 @@ default:
   main_db_path: data/dummy_data.db
   app_title: Basic CRUD App
   app_version: 1.0.0
+  size:
+    small: s
+    medium: m
+    large: l
+    extra_large: xl
