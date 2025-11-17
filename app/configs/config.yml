@@ -6,7 +6,7 @@ default:
     - box
     - kg
     - tonne
-  main_db_path: data/dummy_data.db
+  main_db_path: data/sku_management.db
   app_title: Basic CRUD App
   app_version: 1.0.0
   size:
