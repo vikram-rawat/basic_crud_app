@@ -56,7 +56,6 @@ add_products_server <- function(id) {
     observeEvent(
       input$reset_form,
       {
-        browser()
         updateTextInput(session, "product_name", value = "")
         updateTextInput(session, "variant", value = "")
         updateTextInput(session, "dimensions", value = "")

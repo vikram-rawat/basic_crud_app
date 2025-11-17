@@ -3,7 +3,6 @@ mod_products_ui <- function(id) {
   ns <- NS(id)
 
   card(
-    card_header("Add Products"),
     card_body(
       # Use input_panel for grouped form styling
       accordion(
@@ -20,7 +19,7 @@ mod_products_ui <- function(id) {
 }
 
 # --- Server Module ---
-mod_products_server <- function(id, product_data) {
+mod_products_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 

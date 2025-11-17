@@ -28,16 +28,6 @@ mod_database_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    product_data <- reactiveValues(
-      df = data.frame(
-        ProductName = character(),
-        Variant = character(),
-        Dimensions = character(),
-        UOM = character(),
-        stringsAsFactors = FALSE
-      )
-    )
-
-    mod_products_server("products", product_data)
+    mod_products_server("products")
   })
 }
