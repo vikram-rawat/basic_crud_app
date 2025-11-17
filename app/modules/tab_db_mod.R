@@ -7,7 +7,7 @@ mod_database_ui <- function(id) {
       title = "Database Operations",
       nav_panel(
         "Products",
-        card_title("Add Products"),
+        card_title("Products Data Entry"),
         mod_products_ui("products")
       ),
       nav_panel(
