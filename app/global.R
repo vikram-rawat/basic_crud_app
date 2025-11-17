@@ -14,6 +14,7 @@ source("modules/main_mod.R")
 source("modules/tab_db_mod.R")
 source("modules/tab_reports_mod.R")
 source("modules/nav_theme_mod.R")
+source("modules/db_products_mod.R")
 
 # create variables: ----------------------------------
 get_iris_data_sql <- rs_read_query(

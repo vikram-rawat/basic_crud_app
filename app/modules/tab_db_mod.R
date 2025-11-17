@@ -8,7 +8,7 @@ mod_database_ui <- function(id) {
       nav_panel(
         "Products",
         card_title("Add Products"),
-        "product_form"
+        mod_products_ui("products")
       ),
       nav_panel(
         "Vendors",
@@ -27,5 +27,17 @@ mod_database_ui <- function(id) {
 mod_database_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
+    product_data <- reactiveValues(
+      df = data.frame(
+        ProductName = character(),
+        Variant = character(),
+        Dimensions = character(),
+        UOM = character(),
+        stringsAsFactors = FALSE
+      )
+    )
+
+    mod_products_server("products", product_data)
   })
 }
