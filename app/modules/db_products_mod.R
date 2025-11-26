@@ -6,7 +6,7 @@ mod_products_ui <- function(id) {
     card_body(
       # Use input_panel for grouped form styling
       accordion(
-        open = TRUE,
+        open = FALSE,
         accordion_panel(
           title = "Add New Product",
           ## icon for Add +
