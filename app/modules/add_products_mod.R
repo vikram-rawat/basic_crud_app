@@ -9,8 +9,9 @@ add_products_ui <- function(id) {
       textInput(ns("dimensions"), "Dimensions (e.g., 10x20x5 cm)")
     ),
     layout_columns(
-      col_widths = c(3, 9),
+      col_widths = c(5, 7),
       layout_columns(
+        col_widths = 12,
         selectInput(
           ns("size"),
           "Size",
@@ -24,7 +25,10 @@ add_products_ui <- function(id) {
           selected = global_configs$unit_of_measurement[[1]]
         )
       ),
-      textInput(ns("description"), "Description")
+      layout_columns(
+        col_widths = 12,
+        textInput(ns("description"), "Description")
+      )
     ),
     # Action buttons styled with bslib
     div(
